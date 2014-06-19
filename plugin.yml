@@ -1,6 +1,6 @@
 name: CommandSigns
 main: parancsTablak.ParancsTablak
-version: 1.0.1
+version: 2.0
 
 commands:
   csigns:
