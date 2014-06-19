@@ -20,7 +20,6 @@ public class ParancsTablak extends JavaPlugin implements Listener {
 	
 	
 	String prefix = ChatColor.AQUA + "«" + ChatColor.DARK_BLUE + "«" + ChatColor.BLUE + "Command" + ChatColor.WHITE + "Signs" + ChatColor.DARK_BLUE + "»" + ChatColor.AQUA + "»" + ChatColor.GOLD + " ";
-	Logger log = Logger.getLogger("Minecraft");
 	
 	@SuppressWarnings("unchecked")
 	List<String> parancsok = (List<String>) getConfig().getList("Commands");
@@ -28,20 +27,10 @@ public class ParancsTablak extends JavaPlugin implements Listener {
 	@Override
 	public void onEnable(){
 		
+		//Alapértelmezett konfig mentése
 		saveDefaultConfig();
+		//Jobb klikkre hallgató esemény regisztrálása
 		getServer().getPluginManager().registerEvents(this, this);
-		
-	}
-	
-	@Override
-	public void onDisable(){
-		
-	}
-	
-	public void onReload(){
-		
-		saveConfig();
-		reloadConfig();
 		
 	}
 	
