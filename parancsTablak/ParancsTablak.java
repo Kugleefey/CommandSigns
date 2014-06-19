@@ -42,13 +42,16 @@ public class ParancsTablak extends JavaPlugin implements Listener {
 				
 				if(sender.isOp()){
 					
+					//A hiba karakterlánc több helyen is használt lesz, ezért ide kértem le..
 					String hiba = getConfig().getString("error");
 					
+					//Ha nincs megadva argumentum hajtódjon végre ez a rész:
 					if(args.length < 1){
 						
 						sender.sendMessage(prefix + getConfig().getString("usage").replace("aaa", "á").replace("iii", "í").replace("eee", "é").replace("OoO", "ő").replace("ooo", "ó"));
 						sender.sendMessage(prefix + ChatColor.GRAY + "Plugin created by" + ChatColor.ITALIC + " Kugleefey" + ChatColor.GRAY + ".");
-
+					
+					//Ha az argumentumok száma meghaladja a 2-t hajtódjon végre ez:
 					}else if(args.length > 2){
 						
 						sender.sendMessage(prefix + getConfig().getString("usage").replace("aaa", "á").replace("iii", "í").replace("eee", "é").replace("OoO", "ő").replace("ooo", "ó"));
@@ -56,6 +59,7 @@ public class ParancsTablak extends JavaPlugin implements Listener {
 
 					}else{
 						
+						//Letiltott parancs hozzáadása
 						if(args[0].equalsIgnoreCase("add")){
 							
 							if(args.length == 2){
@@ -83,7 +87,8 @@ public class ParancsTablak extends JavaPlugin implements Listener {
 								sender.sendMessage(prefix + getConfig().getString("addNoWord").replace("***", ":").replace("aaa", "á").replace("iii", "í").replace("eee", "é").replace("OoO", "ő").replace("ooo", "ó"));
 								
 							}
-							
+						
+						//Letiltott parancs eltávolítása
 						}else if(args[0].equalsIgnoreCase("remove")){
 							
 							if(args.length == 2){
@@ -111,12 +116,14 @@ public class ParancsTablak extends JavaPlugin implements Listener {
 								sender.sendMessage(prefix + getConfig().getString("removeNoWord").replace("***", ":").replace("aaa", "á").replace("iii", "í").replace("eee", "é").replace("OoO", "ő").replace("ooo", "ó"));
 								
 							}
-							
+						
+						//Enélkül valamiért hibát dobott ki..
 						}else if(args[0].equalsIgnoreCase("")){
 							
 							sender.sendMessage(prefix + getConfig().getString("usage").replace("***", ":").replace("aaa", "á").replace("iii", "í").replace("eee", "é").replace("OoO", "ő").replace("ooo", "ó"));
 							sender.sendMessage(prefix + ChatColor.GRAY + "Plugin created by" + ChatColor.ITALIC + " Kugleefey" + ChatColor.GRAY + ".");
-							
+						
+						//Letiltott parancsok listája
 						}else if(args[0].equalsIgnoreCase("list")){
 							
 							sender.sendMessage(prefix + getConfig().getString("blockedCMDSList").replace("***", ":").replace("aaa", "á").replace("iii", "í").replace("eee", "é").replace("OoO", "ő").replace("ooo", "ó") + " " + ChatColor.RED + parancsok.toString().replace("[", "").replace("]", "") + ChatColor.GOLD + ".");
@@ -131,7 +138,7 @@ public class ParancsTablak extends JavaPlugin implements Listener {
 						
 					}
 					
-					
+				//Ha nem rendelkezünk Operátori jogokkal, akkor is le tudjuk kérni a letiltott parancsok listáját
 				}else{
 					
 					if(!(args.length != 1)){
@@ -156,7 +163,7 @@ public class ParancsTablak extends JavaPlugin implements Listener {
 				}
 				
 				
-				
+			//Ha konzolból írnánk be a parancsot..
 			}else{
 				
 				String hiba = getConfig().getString("error");
@@ -253,6 +260,7 @@ public class ParancsTablak extends JavaPlugin implements Listener {
 		
 	}
 	
+	//Táblára jobb klikkelő esemény
 	@EventHandler
 	public void onSignRightClick(PlayerInteractEvent e){
 				
@@ -260,6 +268,7 @@ public class ParancsTablak extends JavaPlugin implements Listener {
 		
 		Player p = e.getPlayer();
 		
+		//Lekérdezzük az esemény milétét illetve, hogy a kocka típúsa Tábla-e
 		if(e.getAction() == Action.RIGHT_CLICK_BLOCK && block.getState() instanceof Sign){
 			
 			Sign sign = (Sign) block.getState();
@@ -270,6 +279,7 @@ public class ParancsTablak extends JavaPlugin implements Listener {
 			String arg2 = "";
 			String cmd = "";
 			
+			//Sorok érzékelése
 			if(sign.getLine(0).isEmpty()==false){
 				
 				parancs = sign.getLine(0).replace("[", "").replace("]", "");
@@ -298,6 +308,7 @@ public class ParancsTablak extends JavaPlugin implements Listener {
 				
 			}
 			
+			//Szóközök számlálása a végén lévő opció számára
 			int szokozp = parancs.replace(" ", "").length();
 			int szokoza0 = arg0.replace(" ", "").length();
 			int szokoza1 = arg1.replace(" ", "").length();
@@ -305,16 +316,20 @@ public class ParancsTablak extends JavaPlugin implements Listener {
 			int hossz = szokozp + szokoza0 + szokoza1 + szokoza2;
 			String sor1 = sign.getLine(0);
 			
+			//Tartalmazza-e a tábla a kapcsos zárójeleket
 			if(sor1.contains("[") && sor1.contains("]")){
 				
+				//Érzékeli, nem-e [Buy] tábla vagy hasonló
 				if(!cmd.contains("§")){
 					
+					//Ha a parancs le van tiltva nem csinál semmit
 					if(parancsok.contains(parancs)){}
 									
 					else{
-						
+						//Parancs lefuttatása
 						p.chat("/" + cmd);
 						
+						//Egy opció, plugin pontosság ellenőrzésére
 						if(p.isOp()){
 							
 							if(p.getGameMode().equals(GameMode.ADVENTURE)){
