@@ -1,3 +1,7 @@
 name: CommandSigns
-main: me.kugleefey.CSigns.CSigns
-version: 0.1.0
+main: parancsTablak.ParancsTablak
+version: 1.0.1
+
+commands:
+  csigns:
+     description: CommandSigns main command.
