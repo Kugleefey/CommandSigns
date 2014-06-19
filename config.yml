@@ -10,6 +10,8 @@ removedSuccessful: Sikeresen eltaaavoliiitottad a letiltott parancsok listaaajaa
 removingFailed: A letiltott parancsok listaaaja nem tartalmazza a megadott parancsot ([command]).
 removeNoWord: Egy keeerdeees*** Hogyan vegyek el a listaaaboool egy parancsot, ha nem adod meg?
 blockedCMDSList: A letiltott parancsok listaaaja***
+toggledOn: Mostantoool kapni fogod az eeertesiiiteeeseket.
+toggledOff: Mostantoool nem fogod kapni az eeertesiiiteeeseket.
 Commands:
   - warp
   - ewarp
