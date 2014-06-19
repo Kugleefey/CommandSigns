@@ -1,0 +1,17 @@
+#Ne töröld ki a [command]-ot és társait. Ha megteszed, az üzenet nem fog rendesen megjelenni.
+#A *** kettőspontot jelent.
+#Az aaa á betűt, az eee é betűt, az OoO ő betűt, az iii í betűt, az ooo ó betűt csinál.
+usage: A parancs helyes hasznaaalata /CSigns <add|remove> <parancs>.
+error: Hiba
+addedSuccessful: Sikeresen hozzaaaadtad a letiltott parancsok listaaajaaahoz a(z) [command] parancsot.
+addingFailed: A letiltott parancsok listaaajaaaban maaar bent van a megadott parancs ([command]).
+addNoWord: Egy keeerdeees*** Hogyan adjak hozzaaa a listaaahoz egy parancsot, ha nem adod meg?
+removedSuccessful: Sikeresen eltaaavoliiitottad a letiltott parancsok listaaajaaaboool a(z) [command] parancsot.
+removingFailed: A letiltott parancsok listaaaja nem tartalmazza a megadott parancsot ([command]).
+removeNoWord: Egy keeerdeees*** Hogyan vegyek el a listaaaboool egy parancsot, ha nem adod meg?
+blockedCMDSList: A letiltott parancsok listaaaja***
+Commands:
+  - warp
+  - ewarp
+  - warps
+  - ewarps
