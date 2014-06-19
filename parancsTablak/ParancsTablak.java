@@ -1,7 +1,6 @@
 package parancsTablak;
 
 import java.util.*;
-import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
